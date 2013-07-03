@@ -52,21 +52,4 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
-
-  test "product is not valid with a unique title" do
-    product = Product.new(title: products(:ruby).title,
-                          description: product(:ruby).description,
-                          price: 1,
-                          image_url: "fred.gif")
-    assert product.invalid?
-    assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
-  end
-
-  test "product is valid with a unique title" do
-    product = Product.new(title: "Happy Fun Time",
-                          description: product(:ruby).description,
-                          price: product(:ruby).price,
-                          image_url: product(:ruby).image_url)
-    assert product.valid?
-  end
 end

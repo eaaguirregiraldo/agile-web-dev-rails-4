@@ -49,4 +49,30 @@ class ProductTest < ActiveSupport::TestCase
 		  assert new_product(name).invalid?, "#{name} shouldn't be valid"		
 		end
 	end
+
+	test "product is not valid with a unique title" do
+    product = Product.new(title: products(:ruby).title,
+                          description: products(:ruby).description,
+                          price: 1,
+                          image_url: "fred.gif")
+    assert product.invalid?
+    assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
+  end
+
+  test "product is valid with a unique title" do
+    product = Product.new(title: "Happy Fun Time",
+                          description: products(:ruby).description,
+                          price: products(:ruby).price,
+                          image_url: products(:ruby).image_url)
+    assert product.valid?
+  end
+
+  test "product name must be greater than 2 letters long" do
+  	product = Product.new(title: "a",
+  												description: "abc",
+                          price: 1.00,
+                          image_url: "fred.gif")	
+  	assert product.invalid?
+  	assert_equal ["is too short (minimum is 2 characters)"], product.errors[:title]
+  end
 end
