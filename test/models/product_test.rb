@@ -73,6 +73,6 @@ class ProductTest < ActiveSupport::TestCase
                           price: 1.00,
                           image_url: "fred.gif")	
   	assert product.invalid?
-  	assert_equal ["is too short (minimum is 2 characters)"], product.errors[:title]
+  	assert_equal ["book title must be longer than 2 letters"], product.errors[:title]
   end
 end
