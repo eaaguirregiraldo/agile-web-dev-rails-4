@@ -18,8 +18,12 @@
 					<li><a href="http://www......">Home</a></li>
 					<li><a href="http://www....../faq">FAQ</a></li>
 					<li><a href="http://www......./news">News</a></li>
-					<li><a href="http://www....../contact">Contact</a></li>
+					<li><a href="http://www....../contact">Contact</a></li></br>
+					<li>Currently viewing the catalog for the <%= pluralize(@count, 'time') %></li>
+
 				</ul>
+				<div class="counter">
+				</div>
 			</div>
 			<div id="main">
 				<%= yield %>
