@@ -19,8 +19,9 @@
 					<li><a href="http://www....../faq">FAQ</a></li>
 					<li><a href="http://www......./news">News</a></li>
 					<li><a href="http://www....../contact">Contact</a></li></br>
-					<li>Currently viewing the catalog for the <%= pluralize(@count, 'time') %></li>
-
+					<% if @count.to_i > 5 %>
+						<li>Currently viewing the catalog for the <%= pluralize(@count, 'time') %></li>
+					<% end %>
 				</ul>
 				<div class="counter">
 				</div>
